@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/produits.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Admin Center</title>
+</head>
+
+<body>
+    <header id="header">
+        <div id="user">
+            <img src="img/1.png" alt="logo">
+            <span>Admin</span>
+        </div>
+        <h1>Liste des produits</h1>
+    </header>
+    <main>
+        <aside>
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">
+                        upload
+                    </span>
+                    <a href="/admin">Ajouter photo</a>
+                </li>
+                <li><span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span><a href="/produits">Produits</a></li>
+                <li><span class="material-symbols-outlined">
+                        add
+                    </span><a href="/createproduct">Ajouter produit</a></li>
+                <li>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                    <a href="/delete">Supprimer un produit</a>
+                </li>
+            </ul>
+        </aside>
+        <div id="content">
+
+            <div class="products">
+                {{#each product}}
+                <div class="product">
+                    <img src="{{this.imglink}}" alt="">
+                    <span>{{this.nom}}</span>
+                    <button id="{{this.nom}}" class="button">Modifier</button>
+                    <form action="/edit" method="post" style="display: none;">
+                        <input type="text" class="inputedit" name="name" value="{{this.nom}}" readonly>
+                        <input type="text" id="lien" class="lien" placeholder="Lien de l'article" name="lien">
+                        <button type="button" id="addimg">Image</button>
+                        <div id="imageselector" style="display: none;"></div>
+                        <input type="text" id="imglink" class="lien" placeholder="Lien de l'image" name="imglink">
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const products = document.getElementsByClassName('product');
+        const forms = document.querySelectorAll('form');
+        const buttons = document.getElementsByClassName('button');
+        const inputedit = document.getElementsByClassName('inputedit');
+        const imageselector = document.getElementById('imageselector');
+        const addimg = document.getElementById('addimg');
+        const imglink = document.getElementById('imglink');
+        const size = {{ size }};
+        let visibility = false;
+
+        addimg.addEventListener('click', () => {
+            if (visibility) {
+                imageselector.style.display = 'none';
+                visibility = false;
+            } else {
+                imageselector.style.display = 'block';
+                visibility = true;
+            }
+        })
+
+
+
+        for (let i = 0; i < size; i++) {
+            let imag = document.createElement("img");
+            imag.setAttribute("src", "img/" + (i + 1) + ".png");
+            console.log('test')
+            imageselector.appendChild(imag);
+        }
+
+        const images = document.querySelectorAll("img");
+        for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener('click', () => {
+                imglink.value = images[i].getAttribute('src');
+                visibility = false;
+                imageselector.style.display = 'none';
+                selectedimg.style.display = 'block';
+                selectedimg.setAttribute('src', images[i].getAttribute('src'));
+            });
+        }
+
+        for (let i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', () => {
+                if (forms[i].style.display == 'none') {
+                    forms[i].style.display = 'flex';
+                    buttons[i].innerText = "Annuler"
+                    return;
+                }
+                forms[i].style.display = "none";
+                buttons[i].innerText = "Modifier"
+            });
+        }
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/delete.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Admin Center</title>
+</head>
+
+<body>
+    <header id="header">
+        <div id="user">
+            <img src="img/1.png" alt="logo">
+            <span>Admin</span>
+        </div>
+        <h1>Supprimer des images</h1>
+    </header>
+    <main>
+        <aside>
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">
+                        upload
+                    </span>
+                    <a href="/admin">Ajouter photo</a>
+                </li>
+                <li><span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span><a href="/produits">Produits</a></li>
+                <li><span class="material-symbols-outlined">
+                        add
+                    </span><a href="/createproduct">Ajouter produit</a></li>
+                <li>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                    <a href="/delete">Supprimer un produit</a>
+                </li>
+            </ul>
+        </aside>
+        <div id="content">
+
+            <div class="products">
+                {{#each product}}
+                <div class="product">
+                    <img src="{{this.imglink}}" alt="">
+                    <input type="text" value="{{this.nom }}" style="visibility: hidden;">
+                    <span>{{this.nom}}</span>
+                </div>
+                {{/each}}
+            </div>
+            <form action="/delete" method="post">
+                <input type="text" id="select" name="select" contenteditable="false">
+                <button type="submit">Supprimer</button>
+            </form>
+
+        </div>
+    </main>
+</body>
+
+<script>
+    const products = document.getElementsByClassName('product');
+    console.log(products);
+    const select = document.getElementById('select');
+
+    for (let i = 0; i < products.length; i++) {
+        products[i].addEventListener('click', () => {
+            console.log("child " + products[i].children[1].value)
+            select.value = products[i].children[1].value;
+        });
+    }
+</script>
+
+</html>

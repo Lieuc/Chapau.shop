@@ -1,0 +1,158 @@
+@font-face {
+    font-family: Lato;
+    src: url('/fonts/Lato-Regular.ttf');
+}
+
+
+html, body {
+    font-family: Lato;
+    margin: 0;
+    scroll-behavior: smooth;
+    max-height: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+#p {
+    position: absolute;
+    top: 0;
+    left: 45%;
+    background-color: rgb(9, 160, 9);
+    color: #fff;
+    padding: 10px;
+}
+
+#header {
+    width: 100%;
+    height: 60px;
+    border-bottom: solid 1px #e1e1e1;
+    display: flex;
+    align-items: center;
+}
+
+#header img {
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 30px;
+}
+
+#user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 60px;
+    width: 220px;
+    border-right: solid 1px #e1e1e1;
+}
+
+#header h1 {
+    margin-left: 30px;
+    font-size: 1em;
+    padding: 7px;
+    border-radius: 10px;
+    color: #6447c6;
+    background-color: #30178022;
+}
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+aside {
+    width: 220px;
+    height: 100%;
+    border-right: solid 1px #e1e1e1;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin-left: 30px;
+}
+
+
+ul li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+aside span {
+    background-color: #f6f6ff;
+    color: #6e6e94;
+    border-radius: 50%;
+    padding: 7px;
+}
+
+a:hover {
+    color: #6447c6;
+}
+
+aside a {
+    text-decoration: none;
+    color: #7d7c9c;
+}
+
+#content {
+    width: calc(100% - 221px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputfile {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    display: inline-block;
+    color: #6447c6;
+    background-color: #775ec822;
+    border-radius:40%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+.inputfile + label:hover {
+    background-color: #30178022;
+}
+
+#img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form button {
+    margin-top: 20px;
+    border: none;
+    background-color: #6447c6;
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.5s;
+}
+
+form button:hover {
+    background-color: #30178022;
+    color: #6447c6;
+}

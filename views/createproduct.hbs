@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/createproduct.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Admin Center</title>
+</head>
+
+<body>
+    {{#if message}} <span id="p">{{message}} </span>{{/if}}
+    <header id="header">
+        <div id="user">
+            <img src="img/1.png" alt="logo">
+            <span>Admin</span>
+        </div>
+        <h1>Ajouter des produits</h1>
+    </header>
+    <main>
+        <aside>
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">
+                        upload
+                    </span>
+                    <a href="/admin">Ajouter photo</a>
+                </li>
+                <li><span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span><a href="/produits">Produits</a></li>
+                <li><span class="material-symbols-outlined">
+                        add
+                    </span><a href="/createproduct">Ajouter produit</a></li>
+                <li>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                    <a href="/delete">Supprimer un produit</a>
+                </li>
+            </ul>
+        </aside>
+        <div id="content">
+            <form action="/addproduct" method="POST">
+                <input type="text" name="name" placeholder="Nom du produit" required>
+                <input type="text" name="link" placeholder="Lien du produit" required>
+                <input type="text" style="visibility: hidden;" name="imglink" id="imglink">
+                <button type="button" id="addimg">Image</button>
+                <div id="imageselector" style="display: none;"></div>
+                <img src="" alt="selected image" id="selectedimg" style="display: none;">
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        const imageselector = document.getElementById('imageselector');
+        const addimg = document.getElementById('addimg');
+        const imglink = document.getElementById('imglink');
+        const selectedimg = document.getElementById('selectedimg');
+        let visibility = false;
+        const p = document.getElementById('p');
+
+
+
+
+        addimg.addEventListener('click', () => {
+            if (visibility) {
+                imageselector.style.display = 'none';
+                visibility = false;
+            } else {
+                imageselector.style.display = 'block';
+                visibility = true;
+            }
+        })
+
+        const size = {{ size }};
+
+
+        for (let i = 0; i < size; i++) {
+            let imag = document.createElement("img");
+            imag.setAttribute("src", "img/" + (i + 1) + ".png");
+            imageselector.appendChild(imag);
+        }
+
+        const images = document.querySelectorAll("img");
+        for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener('click', () => {
+                imglink.value = images[i].getAttribute('src');
+                visibility = false;
+                imageselector.style.display = 'none';
+                selectedimg.style.display = 'block';
+                selectedimg.setAttribute('src', images[i].getAttribute('src'));
+            });
+        }
+
+
+
+    </script>
+</body>
+
+</html>

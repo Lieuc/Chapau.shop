@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>ESI au Cambodge</title>
+</head>
+
+<body>
+    <header id="header">
+        <img src="img/monument.jpg" alt="Angkor wat">
+        <h1>ESI au Cambodge</h1>
+        <p>Découvrir le projet</p>
+        <a href="#article-container"> <span class="material-symbols-outlined">
+                mouse
+            </span></a>
+    </header>
+    <article id="article-container">
+        <div id="article">
+            <aside>
+                <h2>Présentation de ESI au Cambodge</h2>
+            </aside>
+            <div id="content">
+                <p id="description">Nous sommes 4 étudiantes infirmières en 3eme année et nous souhaitons partir en
+                    stage au
+                    Cambodge. Nous avons une opportunité incroyable de faire ce stage où nous pourrions en apprendre
+                    plus sur
+                    les soins infirmiers dans un système de santé étranger. Ce stage est basé sur le partage. Nous
+                    allons
+                    acquérir des connaissances mais nous auront également l’occasion d’apporter des dons pour un
+                    orphelinat à
+                    Phnom Penh!
+
+                    Mais pour pouvoir réalisé ce rêve nous avons besoin de financements. C’est pour cela que nous avons
+                    décidé
+                    d’ouvrir une cagnotte, ainsi que la vente de chouchou fait main afin que vous puissiez participer et
+                    nous soutenir si vous le souhaitez!</p>
+            </div>
+        </div>
+    </article>
+    <div id="cagnote">
+        <h3>La cagnote pour nous aider</h3>
+        <a id="don" href="https://www.helloasso.com/associations/esi-au-cambodge/formulaires/1" target="_blank">Faire un
+            don</a>
+    </div>
+    <main>
+        <div id="title-container">
+            <h4>Boutique</h4>
+        </div>
+        <div id="items-container">
+
+            {{#each product}}
+            <div class="product">
+                <div class="header">
+                    <img src="{{this.imglink}}" alt="c1">
+                </div>
+                <div class="bottom">
+                    <a href="http://{{this.lien}}" class="button">Acheter sur Vinted</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </main>
+
+    <footer>
+        <p>Tout droit réservés &copy; cha-pau. <span id="credit">Fait avec <span class="material-symbols-outlined">
+                    favorite </span> par Crabii</span></p>
+    </footer>
+</body>
+
+
+
+</html>

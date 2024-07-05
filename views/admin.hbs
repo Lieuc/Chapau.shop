@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Admin Center</title>
+</head>
+
+<body>
+    {{#if message}} <span id="p">{{message}} </span>{{/if}}
+    <header id="header">
+        <div id="user">
+            <img src="img/1.png" alt="logo">
+            <span>Admin</span>
+        </div>
+        <h1>Ajouter des images</h1>
+    </header>
+    <main>
+        <aside>
+            <ul>
+                <li>
+                    <span class="material-symbols-outlined">
+                        upload
+                    </span>
+                    <a href="/admin">Ajouter photo</a>
+                </li>
+                <li><span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span><a href="/produits">Produits</a></li>
+                <li><span class="material-symbols-outlined">
+                        add
+                    </span><a href="/createproduct">Ajouter produit</a></li>
+                <li>
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span>
+                    <a href="/delete">Supprimer un produit</a>
+                </li>
+            </ul>
+        </aside>
+        <div id="content">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" id="file" class="inputfile" required>
+                <label for="file"><span class="material-symbols-outlined">
+                        upload
+                    </span></label>
+                <img src="" alt="upload file" id="img" style="display: none;">
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </main>
+</body>
+
+<script>
+    const file = document.getElementById('file');
+    const img = document.getElementById('img');
+    const p = document.getElementById('p');
+
+    function message() {
+        p.style.display = "none";
+        p.style.display = "block"
+        setTimeout(() => { p.style.display = "none"; }, 2000)
+
+    }
+
+    message();
+
+    file.onchange = () => {
+        const [f] = file.files;
+        if (f) {
+            img.src = URL.createObjectURL(f);
+            img.style.display = 'block';
+        }
+    }
+</script>
+
+</html>
